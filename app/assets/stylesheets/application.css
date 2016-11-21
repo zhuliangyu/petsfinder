@@ -15,8 +15,9 @@
  *= rel jquery-3.1.1
 *= require font-awesome
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+
+
+
 
 @media (max-width:600px){
   #show-menu {
