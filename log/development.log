@@ -70,3 +70,487 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 247ms (Views: 241.9ms | ActiveRecord: 1.0ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (6.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (18.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", :environment]]
+  [1m[35m (148.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "petfinder_development"[0m
+  [1m[35m (129.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "petfinder_test"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "petfinder_development"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "petfinder_test"[0m
+  [1m[35m (473.7ms)[0m  [1m[35mCREATE DATABASE "petfinder_development" ENCODING = 'unicode'[0m
+  [1m[35m (257.3ms)[0m  [1m[35mCREATE DATABASE "petfinder_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (47.0ms)[0m  [1m[35mCREATE TABLE "messages" ("id" serial primary key, "title" character varying, "body" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "pets" ("id" serial primary key, "pet_type" character varying, "breed" character varying, "name" character varying, "sex" character varying, "color" character varying, "age" integer, "date_seen" timestamp, "note" character varying, "images" character varying, "lost" boolean, "address" character varying, "longitude" float, "latitude" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_pets_on_user_id" ON "pets" USING btree ("user_id")[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE TABLE "sightings" ("id" serial primary key, "pet_type" character varying, "date_seen" timestamp, "note" character varying, "images" character varying, "contact" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "address" character varying, "longitude" float, "latitude" float)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_sightings_on_user_id" ON "sightings" USING btree ("user_id")[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "city" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "image" character varying)[0m
+  [1m[35m (5.9ms)[0m  [1m[35mALTER TABLE "messages" ADD CONSTRAINT "fk_rails_273a25a7a6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "pets" ADD CONSTRAINT "fk_rails_0fa4bae6b1"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "sightings" ADD CONSTRAINT "fk_rails_23b73508c9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20161119193356')[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20161119023222'), ('20161119031106'), ('20161119032215'), ('20161119033028'), ('20161119043325'), ('20161119043431'), ('20161119043614'), ('20161119082933'), ('20161119083213'), ('20161119083856'), ('20161119184047'), ('20161119184222'), ('20161119184548'), ('20161119184909');
+
+[0m
+  [1m[35m (25.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (6.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (11.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-11-21 23:35:36 UTC], ["updated_at", 2016-11-21 23:35:36 UTC]]
+  [1m[35m (11.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "messages" ("id" serial primary key, "title" character varying, "body" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_messages_on_user_id" ON "messages" USING btree ("user_id")[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "pets" ("id" serial primary key, "pet_type" character varying, "breed" character varying, "name" character varying, "sex" character varying, "color" character varying, "age" integer, "date_seen" timestamp, "note" character varying, "images" character varying, "lost" boolean, "address" character varying, "longitude" float, "latitude" float, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_pets_on_user_id" ON "pets" USING btree ("user_id")[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "sightings" ("id" serial primary key, "pet_type" character varying, "date_seen" timestamp, "note" character varying, "images" character varying, "contact" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "user_id" integer, "address" character varying, "longitude" float, "latitude" float)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_sightings_on_user_id" ON "sightings" USING btree ("user_id")[0m
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "last_name" character varying, "email" character varying, "password_digest" character varying, "city" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "image" character varying)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "messages" ADD CONSTRAINT "fk_rails_273a25a7a6"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "pets" ADD CONSTRAINT "fk_rails_0fa4bae6b1"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "sightings" ADD CONSTRAINT "fk_rails_23b73508c9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20161119193356')[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20161119023222'), ('20161119031106'), ('20161119032215'), ('20161119033028'), ('20161119043325'), ('20161119043431'), ('20161119043614'), ('20161119082933'), ('20161119083213'), ('20161119083856'), ('20161119184047'), ('20161119184222'), ('20161119184548'), ('20161119184909');
+
+[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-11-21 23:35:36 UTC], ["updated_at", 2016-11-21 23:35:36 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "f6400dd9-6c5c-4d8f-8007-270d58a78fc4@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Celestine"], ["last_name", "Crona"], ["email", "f6400dd9-6c5c-4d8f-8007-270d58a78fc4@abc.com"], ["password_digest", "$2a$10$0.9lLIlpYcn2WvU0QPrgxOm4NbVCZ4MLzQ2JigoBwe7FSxKlArBg6"], ["city", "Magdalen"], ["created_at", 2016-11-21 23:35:36 UTC], ["updated_at", 2016-11-21 23:35:36 UTC]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "f3477510-9b90-4582-8b0d-3b7139f84b8d@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Gwendolyn"], ["last_name", "Lang"], ["email", "f3477510-9b90-4582-8b0d-3b7139f84b8d@abc.com"], ["password_digest", "$2a$10$qnS3SzAVmhywzc9iuei/Ge//E9OdtZcqlP3zK8pPdheB/jTm3dbm."], ["city", "Edmond"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "25487658-cc50-4323-8bdb-3354ace7bd3e@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Gladyce"], ["last_name", "Runolfsson"], ["email", "25487658-cc50-4323-8bdb-3354ace7bd3e@abc.com"], ["password_digest", "$2a$10$qSfgLyTljyWz/Rlbaodx5O9Jmz5vUgEcibyDasqOFZ2duQqFO6Pb6"], ["city", "Mavis"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "dcb83cb5-3eea-4ca4-b186-428dcf22eda5@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Walker"], ["last_name", "Reilly"], ["email", "dcb83cb5-3eea-4ca4-b186-428dcf22eda5@abc.com"], ["password_digest", "$2a$10$Shu4qOEaX.XsZORwa9TdLea8kg9s6vGH/OAxkxUjnN0nYWWki6WCa"], ["city", "Magdalen"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "2ffe99ec-0cf0-44c4-97f5-f34419e01fcc@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Phoebe"], ["last_name", "Heidenreich"], ["email", "2ffe99ec-0cf0-44c4-97f5-f34419e01fcc@abc.com"], ["password_digest", "$2a$10$KLq0V///FRMOu/MlZaFm3OiVyt9nXuCBCGSaphNEGxTIQ6pTcAndK"], ["city", "Kobe"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "3cd9ecee-19bc-4063-9a20-e7601bf3d5b6@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Rowland"], ["last_name", "Beatty"], ["email", "3cd9ecee-19bc-4063-9a20-e7601bf3d5b6@abc.com"], ["password_digest", "$2a$10$uOrN2FTVeurEjnviAtKdw.UyH.a3IIRZK.8XXk3Bopv2hUmQXOVZ."], ["city", "Carlos"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "386a5e2b-59a5-41a1-9f53-d121213f0035@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Maye"], ["last_name", "Frami"], ["email", "386a5e2b-59a5-41a1-9f53-d121213f0035@abc.com"], ["password_digest", "$2a$10$Gcr724xiUf.ImobBc4tNDOuYHXe0B1QBFkiYmjbPd2UtIeO5WetFi"], ["city", "Marco"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "bf9c5339-7576-4579-b2bd-765369b57fcc@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Xander"], ["last_name", "Ziemann"], ["email", "bf9c5339-7576-4579-b2bd-765369b57fcc@abc.com"], ["password_digest", "$2a$10$s0YeB.qZ.Pqa/fXIsj1TqeuFn4h3he9HcZLFRCUA6f8uPzDwM6DKO"], ["city", "Jeanie"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "6b6699a1-f7f6-42f9-941b-1aaac5500b60@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Ophelia"], ["last_name", "Steuber"], ["email", "6b6699a1-f7f6-42f9-941b-1aaac5500b60@abc.com"], ["password_digest", "$2a$10$gedi9ge88v8Oz0EzxxvRhuDu5UwG03AKWZ71pIhQAMJQQK4QMZ.Ky"], ["city", "Virginia"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER($1) LIMIT $2[0m  [["email", "2769592a-4ccc-4fb2-95ae-1724fff15180@abc.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "password_digest", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Monroe"], ["last_name", "Hoeger"], ["email", "2769592a-4ccc-4fb2-95ae-1724fff15180@abc.com"], ["password_digest", "$2a$10$CaUBIpQO0q3j5qiFYaqITOw46yDTlnMXtfmDRz9jK79G.Xh6TdBZq"], ["city", "Jillian"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (19.8ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Eius alias officiis exercitationem qui sed et ducimus."], ["body", "[\"Est ab architecto eum. Laboriosam ea quod. Tenetur sit quo expedita omnis ut ad sint. Rerum beatae quibusdam quae voluptatibus hic quidem veniam.\", \"Aliquam at quia. Pariatur aut facilis. Nemo in et vel excepturi. Ipsam praesentium ut odio similique. Cumque aut inventore et modi aut nihil omnis.\", \"Libero voluptatem alias velit. Non omnis sit explicabo. Iure et id sunt. Odio exercitationem quam qui rerum adipisci nesciunt consequuntur.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Iure in enim porro quaerat ut."], ["body", "[\"Itaque aut eaque fugiat. Provident voluptate molestiae eos ea illum. Dolores quod earum.\", \"Odio natus cupiditate vero velit ipsa est. Consectetur tenetur optio aspernatur dolorem id sunt. Tenetur id vitae ea reprehenderit rerum. Reiciendis animi error reprehenderit inventore distinctio. Et iusto ut non nulla quis.\", \"Ea temporibus delectus consectetur ut quis error non. Aut eum iusto facere necessitatibus sunt. Saepe facilis voluptas cupiditate ut ut accusantium sint.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Tempore blanditiis ducimus occaecati."], ["body", "[\"Rerum qui quas aut eius omnis asperiores. Nostrum doloremque debitis dolor et consequatur hic laboriosam. Voluptas magnam sed accusamus qui qui.\", \"Et tempora maxime dolorum excepturi. Eaque fuga perspiciatis numquam est harum. Et perspiciatis quae voluptate ratione eius. Optio est labore minus eaque cupiditate. Libero illo et dolore.\", \"Sed et quis dolorem neque ut similique. Expedita suscipit libero accusantium sapiente harum nostrum reprehenderit. Harum ipsum impedit dignissimos. Accusamus minima officiis. Minus voluptas dolor repellendus.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 7]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Aperiam architecto culpa error qui corporis."], ["body", "[\"Dolorem eum ut sint dicta qui. Ut ex impedit. Animi debitis fugit exercitationem consequuntur. Qui ut aliquid. Facilis natus at consequatur.\", \"Repellat fugiat magnam modi a. Cupiditate sit at nisi aspernatur aut eius. Velit aperiam quos fugit omnis sed. Laborum voluptatem id ex optio ut doloribus aut. Ut quis rem reprehenderit et non qui.\", \"Enim aperiam hic quia. Dolore et in dolorem quis voluptatum magnam. Vel et maxime accusantium voluptatem aut quis.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 7]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Animi qui omnis ea."], ["body", "[\"Tempore consequatur aut vel et. Excepturi omnis id nostrum quos voluptas dolorem aut. Impedit adipisci est. Velit sequi doloribus quibusdam. Reprehenderit aliquid fugiat suscipit.\", \"Voluptates culpa commodi. Quibusdam quaerat rerum necessitatibus quam consequuntur et. Sit voluptas facere id accusamus ut.\", \"Eum sit neque eos reiciendis culpa quae illo. Nesciunt repellendus autem blanditiis cupiditate exercitationem aliquam illum. Cum error quis veritatis. Modi impedit et sint quibusdam culpa.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Tempora eveniet sed porro iure laboriosam."], ["body", "[\"Dolore tempora quas facilis maxime laboriosam. Qui nulla facilis eveniet. Nihil voluptatem voluptatem. Ratione incidunt natus cumque porro quisquam iure pariatur.\", \"Ut quo omnis unde ea. Rerum neque optio fugiat consequuntur qui iure voluptas. Est inventore quam. Quaerat id rerum. Alias nulla consequuntur similique.\", \"Et sunt sint et inventore laudantium animi. Quae deserunt repellendus sed distinctio corporis qui. Voluptatem molestiae facere reiciendis et non eveniet. Tenetur nisi in. Sit et natus voluptate in consectetur.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 5]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Sed explicabo nemo et aut."], ["body", "[\"Voluptas natus sed. Eos est laudantium libero voluptate aut. Et exercitationem dolorem sint nihil corrupti dolorum. Aut id quibusdam.\", \"Aliquam rerum maiores. Praesentium sed amet. Minima exercitationem nemo qui ipsam cumque est molestias.\", \"Omnis dicta aut perspiciatis rem ut magnam voluptatem. Velit consequuntur hic aliquam. Inventore vero rerum.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Sunt unde est omnis eius veritatis optio non ut."], ["body", "[\"Architecto reprehenderit et ut laboriosam. Qui rerum voluptatem. Quia id sequi fuga animi molestias assumenda neque. Voluptatum incidunt fugiat aut esse adipisci magni qui.\", \"Eaque explicabo amet ducimus. Molestias odio expedita eos cumque cupiditate. Est corrupti fuga temporibus. Maxime nulla nobis. Deserunt et ut voluptates laborum illo ab.\", \"Modi sapiente eveniet odio. Sit aut sed aut eligendi laboriosam. Pariatur aut ipsum quia omnis et. Sit maxime deleniti.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 7]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Et commodi qui quia."], ["body", "[\"Ut quam rerum nisi excepturi possimus perferendis. Asperiores ipsa id animi mollitia natus assumenda et. Adipisci eos sed. Nostrum ea est autem eum.\", \"Illum qui voluptas laudantium vitae sapiente porro. Eos hic placeat aut. Atque qui sunt quibusdam repellat.\", \"Ducimus eveniet aperiam doloribus omnis labore a. Dolores rerum pariatur aut minus vitae atque. Reprehenderit velit et nesciunt magnam recusandae.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 5]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Enim temporibus cum suscipit nostrum fugit incidunt fugiat."], ["body", "[\"Qui ea itaque cupiditate odio. Incidunt sint maxime perspiciatis ipsum delectus. Nesciunt est sit qui architecto expedita placeat quo. Est et aut et eos aspernatur. Dolores autem labore necessitatibus.\", \"Molestias consequatur ipsam aut aspernatur. Tempore voluptate sit accusamus saepe sit rerum. Eum mollitia est nam eveniet. Fugiat omnis aperiam aspernatur quaerat. Voluptas in in.\", \"Impedit voluptatem aperiam vel. Vel non sunt expedita. Non ratione omnis dicta ut voluptatum.\"]"], ["created_at", 2016-11-21 23:35:37 UTC], ["updated_at", 2016-11-21 23:35:37 UTC], ["user_id", 9]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSighting Load (0.8ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPet Load (0.6ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/" for ::1 at 2016-11-21 15:35:59 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPet Load (4.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (11.8ms)
+Started GET "/" for ::1 at 2016-11-21 15:36:01 -0800
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (7.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPet Load (0.8ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.6ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+  [1m[36mSighting Load (0.9ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 2112ms (Views: 2004.0ms | ActiveRecord: 16.7ms)
+
+
+Completed 200 OK in 605ms (Views: 583.7ms | ActiveRecord: 13.7ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:37:39 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (68.0ms)
+  Rendered messages/_message.html.erb (1.6ms)
+  Rendered messages/new.html.erb within layouts/application (78.6ms)
+  [1m[36mPet Load (1.8ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.5ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 548ms (Views: 484.9ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:38:25 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (3.7ms)
+  Rendered messages/_message.html.erb (1.2ms)
+  Rendered messages/new.html.erb within layouts/application (11.1ms)
+  [1m[36mPet Load (1.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.8ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 330ms (Views: 295.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:38:32 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (1.1ms)
+  Rendered messages/_message.html.erb (0.5ms)
+  Rendered messages/new.html.erb within layouts/application (5.6ms)
+  [1m[36mPet Load (2.0ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.9ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 127ms (Views: 122.5ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:39:07 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (6.1ms)
+  Rendered messages/_message.html.erb (1.2ms)
+  Rendered messages/new.html.erb within layouts/application (16.3ms)
+  [1m[36mPet Load (0.8ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.5ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 458ms (Views: 437.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:39:29 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (2.7ms)
+  Rendered messages/_message.html.erb (1.7ms)
+  Rendered messages/new.html.erb within layouts/application (8.7ms)
+  [1m[36mPet Load (0.6ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.3ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 207ms (Views: 203.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:39:37 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"jhjhjkhkj"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (8.2ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "jhjhjkhkj"], ["created_at", 2016-11-21 23:39:37 UTC], ["updated_at", 2016-11-21 23:39:37 UTC], ["user_id", 4]]
+  [1m[35m (13.0ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (1.7ms)
+  Rendered messages/_form.html.erb (1.2ms)
+  Rendered messages/create_success.js.erb (8.1ms)
+Completed 200 OK in 66ms (Views: 17.4ms | ActiveRecord: 22.5ms)
+
+
+Started GET "/" for ::1 at 2016-11-21 15:40:14 -0800
+Processing by HomeController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mPet Load (2.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (2.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.4ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 245ms (Views: 234.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:40:44 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (3.6ms)
+  Rendered messages/_message.html.erb (8.2ms)
+  Rendered messages/new.html.erb within layouts/application (18.4ms)
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.7ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 373ms (Views: 367.6ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:41:19 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (1.0ms)
+  Rendered messages/_message.html.erb (0.5ms)
+  Rendered messages/new.html.erb within layouts/application (5.0ms)
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.4ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 268ms (Views: 264.3ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:41:23 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"kjlkjkljkl"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (8.0ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "kjlkjkljkl"], ["created_at", 2016-11-21 23:41:23 UTC], ["updated_at", 2016-11-21 23:41:23 UTC], ["user_id", 4]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (1.3ms)
+  Rendered messages/_form.html.erb (1.2ms)
+  Rendered messages/create_success.js.erb (8.4ms)
+Completed 200 OK in 48ms (Views: 21.6ms | ActiveRecord: 15.3ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:41:26 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"jhkhkj"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "jhkhkj"], ["created_at", 2016-11-21 23:41:26 UTC], ["updated_at", 2016-11-21 23:41:26 UTC], ["user_id", 4]]
+  [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (1.4ms)
+  Rendered messages/_form.html.erb (2.8ms)
+  Rendered messages/create_success.js.erb (11.1ms)
+Completed 200 OK in 42ms (Views: 22.4ms | ActiveRecord: 11.8ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:42:10 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (1.6ms)
+  Rendered messages/_message.html.erb (0.5ms)
+  Rendered messages/new.html.erb within layouts/application (8.9ms)
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.3ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 158ms (Views: 155.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:42:14 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"hjhjhkjh"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "hjhjhkjh"], ["created_at", 2016-11-21 23:42:14 UTC], ["updated_at", 2016-11-21 23:42:14 UTC], ["user_id", 4]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (1.1ms)
+  Rendered messages/_form.html.erb (1.8ms)
+  Rendered messages/create_success.js.erb (8.2ms)
+Completed 200 OK in 30ms (Views: 18.0ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:42:17 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"lklkl;k;lk"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "lklkl;k;lk"], ["created_at", 2016-11-21 23:42:17 UTC], ["updated_at", 2016-11-21 23:42:17 UTC], ["user_id", 4]]
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (1.1ms)
+  Rendered messages/_form.html.erb (2.3ms)
+  Rendered messages/create_success.js.erb (8.4ms)
+Completed 200 OK in 32ms (Views: 16.9ms | ActiveRecord: 9.0ms)
+
+
+Started GET "/messages/new" for ::1 at 2016-11-21 15:42:58 -0800
+Processing by MessagesController#new as HTML
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (1.2ms)
+  Rendered messages/_message.html.erb (0.6ms)
+  Rendered messages/new.html.erb within layouts/application (5.5ms)
+  [1m[36mPet Load (0.7ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.6ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 176ms (Views: 173.0ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:43:02 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"hjkhjkh"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "hjkhjkh"], ["created_at", 2016-11-21 23:43:02 UTC], ["updated_at", 2016-11-21 23:43:02 UTC], ["user_id", 4]]
+  [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (1.3ms)
+  Rendered messages/_form.html.erb (2.4ms)
+  Rendered messages/create_success.js.erb (10.8ms)
+Completed 200 OK in 41ms (Views: 23.5ms | ActiveRecord: 10.0ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:43:04 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"kjkjklj"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "kjkjklj"], ["created_at", 2016-11-21 23:43:04 UTC], ["updated_at", 2016-11-21 23:43:04 UTC], ["user_id", 4]]
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (1.9ms)
+  Rendered messages/_form.html.erb (2.3ms)
+  Rendered messages/create_success.js.erb (11.7ms)
+Completed 200 OK in 36ms (Views: 20.3ms | ActiveRecord: 9.0ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:43:07 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"kjkljkl"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "kjkljkl"], ["created_at", 2016-11-21 23:43:07 UTC], ["updated_at", 2016-11-21 23:43:07 UTC], ["user_id", 4]]
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (2.2ms)
+  Rendered messages/_form.html.erb (1.4ms)
+  Rendered messages/create_success.js.erb (11.3ms)
+Completed 200 OK in 36ms (Views: 20.5ms | ActiveRecord: 9.4ms)
+
+
+Started POST "/messages" for ::1 at 2016-11-21 15:43:52 -0800
+Processing by MessagesController#create as JS
+  Parameters: {"utf8"=>"✓", "message"=>{"body"=>"jhkhkjh"}, "commit"=>"Send Message"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("body", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["body", "jhkhkjh"], ["created_at", 2016-11-21 23:43:52 UTC], ["updated_at", 2016-11-21 23:43:52 UTC], ["user_id", 4]]
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+  Rendering messages/create_success.js.erb
+  Rendered messages/_message.html.erb (0.7ms)
+  Rendered messages/_form.html.erb (1.0ms)
+  Rendered messages/create_success.js.erb (5.4ms)
+Completed 200 OK in 30ms (Views: 14.2ms | ActiveRecord: 10.0ms)
+
+
