@@ -1,0 +1,27 @@
+  <section id="home">
+  <div class="header">
+    <div class="back-button">
+    </div>
+    <div class="title" id="home-title">
+      <span style="font-size: xx-large;"><%= fa_icon "paw"%></span>&nbsp;&nbsp;&nbsp;Welcome <%= @user.first_name if user_signed_in? %>
+    </div>
+  </div>
+  <ul class="nav nav-stacked">
+    <div role="presentation" class="nav-title divider">MAKE A REPORT</div>
+    <li role="presentation"><a id="lost-pet" href="/pets/new">Report Your Lost Pet</a></li>
+    <li role="presentation"><a id="found-pet" href="/sightings/new">Found/Sighted Pet</a></li>
+    <div role="presentation" class="nav-title divider">ACCOUNT</div>
+    <li role="presentation"><%# link_to "My Report", user_path(@user) %></li>
+    <% if user_signed_in? %>
+      <li role="presentation"><a id="reports" href="/users/<%= @user.id %>">My Reports</a></li>
+      <li role="presentation"><a id="messages" href="/messages/new">Messages</a></li>
+      <li role="presentation"><a id="settings" href="#">Settings</a></li>
+      <li role="presentation"><%= link_to "Log out", sessions_path	, method: :delete %></li>
+    <% else  %>
+      <li role="presentation"><a id="login" href="/sessions/new">Login</a></li>
+      <li role="presentation"><a id="signup" href="/users/new">Sign Up</a></li>
+    <% end %>
+    <li role="presentation"><a id="about-us" href="home/about">About find my pet</a></li>
+
+  </ul>
+</section>

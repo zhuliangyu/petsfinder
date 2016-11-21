@@ -1,0 +1,6 @@
+<% if message.body.present? %>
+<div class="well well-sm"  id= "<%= dom_id(message) %>">
+  <%= message.body %>
+  <%= link_to "Delete", @message, remote: true, method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
+<% end %>

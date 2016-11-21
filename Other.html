@@ -1,0 +1,237 @@
+<section id="home">
+  <div class="header">
+    <div class="back-button">
+    </div>
+    <div class="title">
+      Home
+    </div>
+  </div>
+    <ul class="nav nav-stacked">
+      <div role="presentation" class="nav-title divider">MAKE A REPORT</div>
+      <li role="presentation"><a id="lost-pet" href="/pets#create">Report Your Lost Pet</a></li>
+      <li role="presentation"><a id="found-pet" href="/sighting#create">Found/Sighted Pet</a></li>
+      <div role="presentation" class="nav-title divider">ACCOUNT</div>
+      <li role="presentation"><a id="messages" href="#">Messages</a></li>
+      <li role="presentation"><a id="settings" href="#">Settings</a></li>
+      <li role="presentation"><a id="login" href="/session#new">Login</a></li>
+      <li role="presentation"><a id="signup" href="/user#create">Sign Up</a></li>
+      <li role="presentation"><a id="about-us" href="#">About find my pet</a></li>
+    </ul>
+  </section>
+
+  <section id="lost-pet" class="menu-item">
+    <div class="header">
+      <div class="back-button">
+        <a href="#"><a href="#">&lt;</a></a>
+      </div>
+      <div class="title">
+        LOST PET
+      </div>
+    </div>
+    <div class="container-fluid">
+      <form id="target" action="http://localhost:3000/pets" method="post" enctype="multipart/form-data">
+        <div class="form-group col-xs-12">
+          <label for="pet-type">Pet Type</label>
+          <input type="input" name="pet-type" class="form-control" id="pet-type">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="pet-breed">Breed</label>
+          <input type="input" name="pet-breed" class="form-control" id="pet-breed">
+        </div>
+        <div class="form-group col-xs-6">
+          <label for="pet-name">Name</label>
+          <input type="input" name="pet-name" class="form-control" id="pet-name">
+        </div>
+        <div class="form-group col-xs-6">
+          <label for="pet-gender">Gender</label>
+          <input type="input" name="pet-gender" class="form-control" id="pet-gender">
+        </div>
+        <div class="form-group col-xs-6">
+          <label for="pet-color">Color</label>
+          <input type="input" name="pet-color" class="form-control" id="pet-color">
+        </div>
+        <div class="form-group col-xs-6">
+          <label for="pet-age">Age</label>
+          <input type="input" name="pet-age" class="form-control" id="pet-age">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="last-seen">Last seen at</label>
+          <input type="input" name="last-seen" class="form-control" id="last-seen">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="date-time">Date/time</label>
+          <input type="date" name="date-time" class="form-control" id="date-time">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="notes">Notes</label>
+          <textarea class="form-control" name="notes" id="notes" rows="3"></textarea>
+        </div>
+
+        <div class="form-group col-xs-12">
+          <label for="pet-photos">Add photos</label>
+          <input type="file" name="pet-photos" id="pet-photos">
+        </div>
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary">Preview Report</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="found-pet">
+    <div class="header">
+      <div class="back-button">
+        <a href="#">&lt;</a>
+      </div>
+      <div class="title">
+        Found/Sighted Pet
+      </div>
+    </div>
+    <div class="container-fluid">
+      <form id="target-sightings" action="http://localhost:3000/sightings" method="post" enctype="multipart/form-data">
+        <div class="form-group col-xs-12">
+          <label for="pet-photos">Add photos</label>
+          <!-- <input type="file" accept="image/*" capture="camera" /> -->
+          <!-- <input type="file" name="pet-photos" id="pet-photos"> -->
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="pet-type">Pet Type</label>
+          <input type="input" name="pet-type" class="form-control" id="pet-type">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="last-seen">Last seen at</label>
+          <input type="input" name="last-seen" class="form-control" id="last-seen">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="date-time">Date/time</label>
+          <input type="date" name="date-time" class="form-control" id="date-time">
+        </div>
+        <div class="form-group col-xs-12">
+          <label for="notes">Notes</label>
+          <textarea class="form-control" name="notes" id="notes" rows="3"></textarea>
+        </div>
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary">Preview Report</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="show-sighting">
+    <div class="header">
+      <div class="back-button">
+        <a href="#">&lt;</a>
+      </div>
+      <div class="title">
+        Pet Sighting
+      </div>
+    </div>
+    <div class="content">
+      <section class="pet-details"></section>
+      <script id="pet-details">
+
+        <p>Pet type: {{pet_type}}</p>
+        <p>Last Seen: {{last_seen}}</p>
+        <p>Date/Time: {{date_seen}}</p>
+        <p>Note: {{note}}</p>
+      </script>
+    </div>
+
+  </section>
+
+  <section id="about-us">
+    <div class="header">
+      <div class="back-button">
+        <a href="#">&lt;</a>
+      </div>
+      <div class="title">
+        About Us
+      </div>
+    </div>
+  </section>
+
+  <section id="messages">
+    <div class="header">
+      <div class="back-button">
+        <a href="#">&lt;</a>
+      </div>
+      <div class="title">
+        Messages
+      </div>
+    </div>
+  </section>
+
+  <section id="settings">
+    <div class="header">
+      <div class="back-button">
+        <a href="#">&lt;</a>
+      </div>
+      <div class="title">
+        Settings
+      </div>
+    </div>
+  </section>
+
+  <section id="login">
+    <div class="header">
+      <div class="back-button">
+        <a href="#">&lt;</a>
+      </div>
+      <div class="title">
+        Login
+      </div>
+    </div>
+    <div>
+      <form id="login-form" action="http://localhost:3000/sessions" method="post">
+        <div>
+          <label>Email: </label>
+          <input type="email" id="log-in-form-email">
+        </div>
+        <div>
+          <label>Password: </label>
+          <input type="password" id="log-in-form-password">
+        </div>
+        <div>
+          <input type="submit">
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="signup">
+    <div class="header">
+      <div class="back-button">
+        <a href="#">&lt;</a>
+      </div>
+      <div class="title">
+        Sign Up
+      </div>
+    </div>
+    <div>
+      <form id="signup-form" action="http://localhost:3000/sessions" method="post">
+        <div>
+          <label>First Name: </label>
+          <input type="text" id="signup-first-name">
+        </div>
+        <div>
+          <label>Last Name: </label>
+          <input type="text" id="signup-last-name">
+        </div>
+        <div>
+          <label>Email: </label>
+          <input type="email" id="signup-form-email">
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type="password" id="signup-form-password">
+        </div>
+        <div>
+          <label>Password confirmation: </label>
+          <input type="password" id="signup-form-confirmation">
+        </div>
+        <div>
+          <input type="submit">
+        </div>
+      </div>
+    </div>
+  </section>

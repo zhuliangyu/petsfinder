@@ -1,0 +1,120 @@
+rails generate model pet type breed name sex color age:integer last_seen date_seen:datetime note images lost:boolean location longitude:float latitude:float
+
+rails generate model sighting type last_seen date_seen:datetime note image contact
+
+rails g model user first_name last_name email password_digest city image
+
+#rails generate controller users
+#rails generate controller sessions
+
+
+rails generate controller pets
+
+rails generate controller sightings
+
+rails g migration add_user_to_pets user:references
+
+rails g migration add_user_to_sightings user:references
+
+rails g migration add_user_to_messages user:references
+
+rails g migration add_user_to_messages user:references
+
+rails g migration Change_ColumnName_Sightings
+
+*********
+rails g migration Change_column_location_to_address_Pets
+
+rails g migration delete_column_last_seen_Pets
+
+rails g migration add_columns_adress_to_Sightings
+
+rails g migration delete_column_last_seen_sighting
+
+    rename_column :pets, :location, :address
+
+
+
+rails db:migrate
+rails db:drop
+rails db:create
+rails db:version
+rails db:seed
+
+in my branch do the merge!!!
+
+
+
+
+
+
+rails generate model message title body
+
+
+user has many messages
+
+Message
+	t.string   "title"
+    t.string   "body"
+
+Pet (lost)
+	t.string   "pet_type"
+    t.string   "breed"
+    t.string   "name"
+    t.string   "sex"
+    t.string   "color"
+    t.integer  "age"
+    t.datetime "date_seen"
+    t.string   "note"
+    t.string   "images"
+    t.boolean  "lost"
+    t.string   "address"
+    t.float    "longitude"
+    t.float    "latitude"
+
+Sighting
+ 	t.string   "pet_type"
+    t.datetime "date_seen"
+    t.string   "note"
+    t.string   "images"
+    t.string   "contact"
+    t.string   "address"
+    t.float    "longitude"
+    t.float    "latitude"
+
+ User
+ 	t.string :first_name
+    t.string :last_name
+    t.string :email
+    t.string :password_digest
+    t.string :city
+
+
+ set routes
+
+ http://localhost:3000/sightings
+
+
+
+************************
+gco controller_sighting_Ricky
+git add
+git commit
+git push origin controller_sighting_Ricky
+
+
+gco master
+git pull origin master
+
+git merge controller_sighting_Ricky
+
+conflic 
+
+git add
+git commit
+
+git push origin master
+
+**********************
+
+

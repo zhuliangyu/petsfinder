@@ -1,0 +1,38 @@
+<h1>Edit pet</h1>
+
+<%= simple_form_for @pet do |f| %>
+  <div>
+    <%= f.label :pet_type %>
+    <%= f.select :pet_type, ['Dog', 'Cat'] %>
+  </div>
+
+  <div>
+    <%= f.input :breed %>
+    <%= f.input :name %>
+  </div>
+
+  <div>
+    <%= f.label :sex %>
+    <%= f.select :sex, ['Male', 'Female'] %>
+  </div>
+
+  <div>
+    <%= f.input :color %>
+    <%= f.input :address %>
+  </div>
+
+  <div>
+    <%= f.input :age, as: :numeric %>
+    <%= f.input :address %>
+    <%= f.datetime_select :date_seen %>
+    <%= f.input :note %>
+    <%= file_field_tag('item_attached_assets_asset', multiple: true, name: "item[attached_assets_attributes][][asset]") %>
+  </div>
+
+  <div>
+    <%= f.hidden_field :latitude, class: "lat" %>
+    <%= f.hidden_field :longitude, class: "lng" %>
+  </div>
+
+  <%= f.submit class: "btn btn-default" %>
+<% end %>

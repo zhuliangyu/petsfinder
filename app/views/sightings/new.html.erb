@@ -1,0 +1,70 @@
+<section id="found-pet">
+  <div class="header">
+
+    <div class="title">
+      <div class="title"><a class="back-button" href="/">&lt;</a>Found or Sighted Pet</div>
+    </div>
+
+  </div>
+
+  <div id="sighting-container">
+    <h3>Pet details:</h3>
+    <%= form_for(@sighting, html: { class: "form-vertical", role: "form"}) do |f| %>
+      <div class="form-group">
+        <%= f.label :images %><br />
+        <%= f.file_field :images %>
+      </div>
+      <div class="form-group">
+        <%= f.label :pet_type %><br />
+        <%= f.select :pet_type, ['Dog', 'Cat'] %>
+      </div>
+      <div class="form-group">
+        <%= f.label :address %><br />
+        <%= f.text_field :address %>
+      </div>
+      <div class="form-group">
+        <%= f.label :date_seen, "Date spotted:" %><br />
+        <%= f.date_field :date_seen %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :note, "Notes" %><br />
+        <%= f.text_area :note, size: "30x5"  %>
+        <%= f.hidden_field :latitude, class: "lat" %>
+        <%= f.hidden_field :longitude, class: "lng" %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+
+      </div>
+</section>
+
+
+
+
+    <!-- <form id="target-sightings" action="http://localhost:3000/sightings" method="post" enctype="multipart/form-data">
+      <div class="form-group col-xs-12">
+        <label for="pet-photos">Add photos</label>
+        <input type="file" accept="image/*" capture="camera" />
+        <input type="file" name="pet-photos" id="pet-photos">
+      </div>
+      <div class="form-group col-xs-12">
+        <label for="pet-type">Pet Type</label>
+        <input type="input" name="pet-type" class="form-control" id="pet-type">
+      </div>
+      <div class="form-group col-xs-12">
+        <label for="last-seen">Last seen at</label>
+        <input type="input" name="last-seen" class="form-control" id="last-seen">
+      </div>
+      <div class="form-group col-xs-12">
+        <label for="date-time">Date/time</label>
+        <input type="date" name="date-time" class="form-control" id="date-time">
+      </div>
+      <div class="form-group col-xs-12">
+        <label for="notes">Notes</label>
+        <textarea class="form-control" name="notes" id="notes" rows="3"></textarea>
+      </div>
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-primary">Preview Report</button>
+      </div>
+    </form> -->

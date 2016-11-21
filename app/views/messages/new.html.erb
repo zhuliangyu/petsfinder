@@ -1,0 +1,12 @@
+<div style="width:100%;">
+<div class="container">
+    <h1 align="center-left">Message</h1>
+    <%= render "form"%>
+
+    <div id="messages">
+      <%# if @message.nil? == false %>
+        <%= render 'message', {message: @message} %>
+      <%# end %>
+    </div>
+</div>
+<div>
