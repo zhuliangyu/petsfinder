@@ -29,3 +29,44 @@ Completed 200 OK in 5536ms (Views: 5501.6ms | ActiveRecord: 27.6ms)
 Completed 200 OK in 11200ms (Views: 11159.6ms | ActiveRecord: 31.6ms)
 
 
+Started GET "/" for 127.0.0.1 at 2016-11-21 15:04:37 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (10.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.8ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 1718ms (Views: 1638.0ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/pets/new" for 127.0.0.1 at 2016-11-21 15:04:46 -0800
+Processing by PetsController#new as HTML
+  Rendering pets/new.html.erb within layouts/application
+  Rendered pets/new.html.erb within layouts/application (1251.9ms)
+  [1m[36mPet Load (1.8ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (1.1ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 1671ms (Views: 1663.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-11-21 15:16:22 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (0.9ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (10.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.8ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 919ms (Views: 845.8ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2016-11-21 15:16:37 -0800
+Processing by HomeController#index as HTML
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  [1m[36mSighting Load (0.5ms)[0m  [1m[34mSELECT "sightings".* FROM "sightings"[0m
+Completed 200 OK in 247ms (Views: 241.9ms | ActiveRecord: 1.0ms)
+
+
